@@ -1,9 +1,9 @@
 app:
   title: Scaffolded Backstage App
-  baseUrl: http://localhost:3000
+  baseUrl: https://pubdev-backstage.herokuapp.com
 
 organization:
-  name: PubDev Company
+  name: My Company
 
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
@@ -11,15 +11,15 @@ backend:
   # auth:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
-  baseUrl: http://localhost:7007
+  baseUrl: https://pubdev-backstage.herokuapp.com
   listen:
-    port: 7007
+    port: ${PORT}
   csp:
     connect-src: ["'self'", 'http:', 'https:']
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
-    origin: http://localhost:3000
+    origin: https://pubdev-backstage.herokuapp.com
     methods: [GET, POST, PUT, DELETE]
     credentials: true
   database:
@@ -32,7 +32,7 @@ backend:
 integrations:
   github:
     - host: github.com
-      token: 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
+      token: ${GITHUB_TOKEN}
     ### Example for how to add your GitHub Enterprise instance using the API:
     # - host: ghe.example.net
     #   apiBaseUrl: https://ghe.example.net/api/v3
@@ -65,29 +65,25 @@ catalog:
   rules:
     - allow: [Component, System, API, Group, User, Resource, Location]
   locations:
-    # (since 0.13.5) Scan all repositories for a catalog-info.yaml in the root of the default branch
-    - type: github-discovery
-      target: https://github.com/pubdev-backstage-live
-
     # Backstage example components
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-components.yaml
+    - type: url
+      target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-components.yaml
 
-    # # Backstage example systems
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-systems.yaml
+    # Backstage example systems
+    - type: url
+      target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-systems.yaml
 
-    # # Backstage example APIs
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-apis.yaml
+    # Backstage example APIs
+    - type: url
+      target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-apis.yaml
 
-    # # Backstage example resources
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-resources.yaml
+    # Backstage example resources
+    - type: url
+      target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all-resources.yaml
 
-    # # Backstage example organization groups
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme/org.yaml
+    # Backstage example organization groups
+    - type: url
+      target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme/org.yaml
 
     # Backstage example templates
     - type: url
