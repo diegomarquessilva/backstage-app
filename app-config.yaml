@@ -1,9 +1,9 @@
 app:
-  title: Scaffolded Backstage App
+  title: PubDev Backstage App
   baseUrl: https://pubdev-backstage.herokuapp.com
 
 organization:
-  name: My Company
+  name: PubDev
 
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
